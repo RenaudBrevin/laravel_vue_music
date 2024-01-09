@@ -26,12 +26,13 @@
     </MusicLayout>
 </template>
 <script>
-import MusicLayout from '@/Layouts/MusicLayout.vue';
-import { Link } from '@inertiajs/vue3';
-
-export default {
+  import MusicLayout from "@/Layouts/MusicLayout.vue";
+  import { Link } from "@inertiajs/vue3";
+  
+  export default {
     components: {
-        MusicLayout
+      MusicLayout,
+      Link,
     },
     props: {
         tracks: Array,
