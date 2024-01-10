@@ -44,6 +44,7 @@
                       Musique
                   </label>
                   <input id="music"
+                    @input="form.music = $event.target.files[0]"
                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       :class="{ 'border-red-500': form.errors.music }" type="file" placeholder="Music">
                   <p class="text-red-500 text-xs italic">{{ form.errors.music }}</p>
