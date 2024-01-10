@@ -5,24 +5,35 @@
         </template>
         <template #action>
             <Link
-                :href="route('tracks.create')"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all"
+            v-if="$page.props.isAdmin"
+            :href="route('tracks.create')"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all"
             >
-                Créer une musique
+            Créer une musique
             </Link>
         </template>
         <template #content>
             <div class="my-4">
-                <input v-model="search" type="search" name="search" id="search" class="border p-2 rounded-md w-full md:w-2/3 lg:w-1/2 xl:w-1/3">
-                <div class="flex flex-col mt-4 gap-4">
-                    <Track v-for="track in filteredTracks" 
-                    :key="track.uuid" 
-                    :track="track" :active="currentTrack == track.uuid" 
+                <input
+                    v-model="search"
+                    type="search"
+                    name="search"
+                    id="search"
+                    class="border p-2 rounded-md w-full md:w-2/3 lg:w-1/2 xl:w-1/3"
+                    placeholder="Rechercher une musique..."
+                />
+                <div class="flex flex-col mt-4 space-y-4">
+                    <Track
+                    v-for="track in filteredTracks"
+                    :key="track.uuid"
+                    :track="track"
+                    :active="currentTrack == track.uuid"
                     @played="play"
-                    @click="playAudio(track)" />
-                </div>
-                <div v-if="filteredTracks.length === 0" class="text-center text-gray-600 mt-4">
-                Aucun résultat trouvé.
+                    @click="playAudio(track)"
+                    />
+                    <div v-if="filteredTracks.length === 0" class="text-center text-gray-600 mt-4">
+                    Aucun résultat trouvé.
+                    </div>
                 </div>
             </div>
         </template>

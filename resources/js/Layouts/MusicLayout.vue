@@ -53,16 +53,19 @@
                     <div>
                         <Link
                         :href="route('login')"
+                        v-if="! $page.props.auth.user"
                         class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">
                         Se connecter
                         </Link>
                         <Link
                         :href="route('register')"
+                        v-if="! $page.props.auth.user"
                         class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">
                         S'inscrire
                         </Link>
                         <Link 
                         :href="route('logout')"
+                        v-if="$page.props.auth.user"
                         method="POST"
                         as="button"
                         class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">
