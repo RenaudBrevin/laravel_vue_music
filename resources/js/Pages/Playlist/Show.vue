@@ -13,12 +13,13 @@
         </template>
         <template #content>
             <Track
-                v-for="track in playlists.tracks"
+                v-for="track in playlist.tracks"
                 :key="track.uuid"
                 :track="track"
                 :active="currentTrack == track"
                 @played="play"
-                />
+                >
+            </Track>
         </template>
     </MusicLayout>
 </template>
@@ -34,7 +35,7 @@ export default {
     Track,
   },
   props: {
-    playlists: Object,
+    playlist: Object,
   },
   methods: {
         playAudio(track) {

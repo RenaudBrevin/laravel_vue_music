@@ -3,6 +3,7 @@
         <template #title>
             Playlist
         </template>
+        
         <template #action>
             <Link
             :href="route('playlist.create')"
@@ -49,11 +50,18 @@
                     <td class="py-2 px-4">{{ playlist.title }}</td>
                     <td class="py-2 px-4">{{ playlist.tracks_count }}</td>
                     <td class="py-2 px-4">{{ $moment(playlist.created_at).format('DD/MM/YYYY') }}</td>
+                    <td class="py-2 px-4">
                     <Link
                       :href="route('playlist.show', {playlist: playlist.uuid})"
                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all">
                       Voir
                     </Link>
+                    <Link
+                      :href="route('playlist.destroy', {playlist: playlist})" method="delete" as="button"
+                      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all">
+                      Supprimer
+                    </Link>
+                    </td>
                   </tr>
                 </tbody>
               </table>

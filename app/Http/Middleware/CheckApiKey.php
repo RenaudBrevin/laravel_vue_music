@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class isAdmin
+class CheckApiKey
 {
     /**
      * Handle an incoming request.
@@ -15,10 +15,6 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!$request->user()?->admin) {
-            return redirect()->back();
-        }
-
         return $next($request);
     }
 }

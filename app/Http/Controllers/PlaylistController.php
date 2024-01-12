@@ -95,6 +95,9 @@ class PlaylistController extends Controller
      */
     public function destroy(Playlist $playlist)
     {
-        //
+        $playlist->tracks()->detach();
+        $playlist->delete();
+
+        return redirect()->route('playlist.index');
     }
 }

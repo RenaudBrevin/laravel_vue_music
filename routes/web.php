@@ -6,6 +6,7 @@ use Illuminate\Foundation\Application;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TrackController;
 use App\Http\Controllers\PlaylistController;
+use App\Http\Controllers\ApiKeyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,14 @@ use App\Http\Controllers\PlaylistController;
 |
 */
 
+// routes/web.php
 
-Route::get('/', [TrackController::class, 'index'])->name('tracks.index');
+
+// Route vers formulaire pour api
+Route::get('/api', [UserController::class, 'api'])->name('api.index');
+
+
+Route::get('/', [ApiKeyController::class, 'index'])->name('tracks.index');
 Route::get('/playlists', [PlaylistController::class, 'index'])->name('playlists.index');
 Route::get('/playlists/{playlist}', [PlaylistController::class, 'show'])->name('playlists.show');
 
